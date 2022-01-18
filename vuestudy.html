@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>vue</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+	<!-- V-text 为设置文本 -->
+	<!-- ##结果都是 asd! V-text的名称不一定为message可以设置为你想要的
+	<div id="app">
+		<h2 v-text="message+'!'">深圳</h2>
+		<h2 v-text="info">深圳</h2>
+		<h2>{{message+"!"}}深圳</h2>
+	##	{{为差值表达式}}
+	##	字符串拼接三种写法都可输出！
+	##	三个深圳只有在第三个会出现 asd！深圳， 所以要替换一定要第三种写法，并且是先输出data再输出你添加的
+    </div>
+	 <script>
+		 var app=new Vue({
+			 el:"#app",
+			data:{
+				message:"asd",
+				info:"牛逼"
+ 	##		info输出 为牛逼
+			}
+		 })
+	 </script>
+	  -->
+
+
+
+	<!-- v-html为设置标签-->
+	<!-- <div id="app">
+	##此时如果设置文本的话 V-text和V-html都输出的qwerty没区别
+	##如果设置标签的话就不同
+	 <p v-text="content"></p>
+	 <p v-html="content"></p>
+	  </div>
+	  <script>
+		  var app=new Vue({
+			  el:"#app",
+			  data:{
+				##此时两个标签都是一样的都是文本输出qwerty
+				content:"qwerty",
+				##此时下面v-text只会显示文本 而v-html会显示链接
+				content:"<a href='http://fengshanggui.com'>my blog</a>"
+			  }
+		  })
+	  </script> -->
+<!-- 解析文本使用V-TEXT 解析html结构使用V-html -->
+
+
+
+
+<!-- V-on为绑定元素事件 -->
+<!-- <input type="button" value="事件绑定" v-on:click="方法"> -->
+<!-- <input type="button" value="事件绑定" @dbclick="方法"> -->
+<!-- 如果是点击事件写v-on:click="" -->
+<!-- 如果是鼠标移入事件写V-on:monseenter="" -->
+<!-- 如果是双击事件写v-on:dblclick="方法"  双击记得是DBL 别少写L--><!-- 
+	var app=new Vue({
+		el:"#app",
+		methods:{
+			方法:function(){
+			//逻辑
+			}
+		}
+	})
+ -->
+	  <!-- <div id="app">
+	##此时这里会弹窗“输出！” 并且名称为v-on指令
+  <input type="button" value="v-on指令" @click="doit">
+    ##输出完全输出
+  <input type="button" value="v-on指令" v-on:click="doit1">
+ <h2 @click="changeFood">{{food}}</h2>
+</div>
+<script>
+	var app=new Vue({
+		el:"#app",
+		data:{
+			food:"西兰花炒蛋"
+		},
+		methods:{
+			doit:function(){
+				alert("输出！");
+			},
+			doit1:function(){
+				alert("完全输出!");
+			},
+			 ##由此可发现是可以写两个方法在一个methods属性中的
+			 ##如果要修改点击后的值可以在此看 vue的一个好处就是不直接操作dom但是深层还是dom
+			changeFood:function(){
+				 ##console.log(this.food);
+				this.food+="好好吃饭";
+			   ## 点击后会显示西兰花炒蛋好好吃饭
+			   ##方法内部通过this关键字可以访问定义在data中的数据
+			}
+	  
+		},
+	})
+</script> -->
+
+
+<!--计数器实例-->
+<div></div>
+<script>
+ var app=new Vue({
+	 el="#app",
+	 data:
+ })
+}
+</script>
+
+
+</body>
+
+</html>
