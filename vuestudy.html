@@ -92,7 +92,7 @@
 			doit1:function(){
 				alert("完全输出!");
 			},
-			 ##由此可发现是可以写两个方法在一个methods属性中的
+			 ##由此可发现是可以写两个属性在一个methods方法中的
 			 ##如果要修改点击后的值可以在此看 vue的一个好处就是不直接操作dom但是深层还是dom
 			changeFood:function(){
 				 ##console.log(this.food);
@@ -107,16 +107,79 @@
 
 
 <!--计数器实例-->
-<div></div>
+<!-- 
+	data中定义数据:比如num
+	methods中添加两个方法：比如add，sub
+	使用v-text将num设置给span标签 {{}}为v-text的缩写
+	使用v-on将add sub分别绑定给+，-按钮
+	累加的逻辑小于10累计，否则提示
+	递减的逻辑大于0递减，否则提示
+ -->
+<!-- <div id="app">
+	<button @click="sub">-</button>
+	 <span>{{num}}</span>
+	 <button @click="add">+</button>
+</div>
 <script>
  var app=new Vue({
-	 el="#app",
-	 data:
+	 el:"#app",
+	 data:{
+		 num:1
+	 },
+	 methods: {
+		 add:function(){
+			 if(this.num<10){
+			this.num++;}
+			else{
+				alert("最多就能加这么多了");
+			}
+		 },
+		 sub:function(){
+			 if(this.num>0){
+			this.num--;}
+			else{
+				alert("最多就到0了");
+			}
+			
+		 }
+	 },
+	  
  })
-}
-</script>
+//  this.num代表的是data数据对象里的num
+</script> -->
 
 
+
+
+<!-- v-show  根据表达式的真假切换元素的显示和隐藏-->
+<!-- 原理是修改display实现显示隐藏 -->
+<!-- 指令后面的内容最终都会解析为布尔值 -->
+<!-- true为显示 false为隐藏 -->
+<!-- <div id="app">
+	<input type="button"value="增加年龄" @click="ischangeage">{{age}}
+	<input type="button" value="切换状态" @click="ischange">
+ 	<img src="1.jpg" alt="" v-show="isShow">
+  <img src="1.jpg" alt="1" v-show="true">
+ <img src="1.jpg" alt="" v-show="age>=18">
+</div>
+<script>
+ var app=new Vue({
+	 el:"#app",
+	 data:{
+		 isShow:false,
+		 age:16,
+	 },
+	 methods: {
+		 ischange:function(){
+			 this.isShow=!this.isShow;
+		 },
+		 ischangeage:function(){
+			 this.age++;
+		 }
+	 }
+ })
+
+</script> -->
 </body>
 
 </html>
