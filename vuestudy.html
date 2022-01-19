@@ -178,8 +178,173 @@
 		 }
 	 }
  })
-
 </script> -->
-</body>
 
+
+<!-- v-if指令  根据表达式的真假 切换元素的显示和隐藏 (操纵dom元素)-->
+<!-- <div id="app">
+	<img src="1.jpg" alt="" v-if="isShow">
+	<input type="button" value="切换状态" @click="toisShow">
+	<p v-show="isShow"> @click中的是方法名称</p>
+</div>
+<script>
+	var app=new Vue({
+		el:"#app",
+		data:{
+			isShow:false
+		},
+		methods: {
+			toisShow:function(){
+				this.isShow=!this.isShow;
+			}
+		},
+	})
+</script> -->
+
+
+<!-- V-if 和 V-show 的区别在于是否直接操纵dom 前者操纵 后者操纵样式display:none
+频繁的切换是用v-show 反之适用V-if 前者的切换消耗小 -->
+
+
+<!-- v-bind 为元素绑定属性 设置元素的属性 -->
+<!-- v-bind 缩写  :跟上属性名字 -->
+<!-- <style>
+	.active{
+		border:1px solid red;
+	}
+</style>
+
+
+<div id="app">
+   <img src="" alt="" v-bind:src="imgSrc">
+   <img src="" alt="简写的方式" :src="imgSrc">
+  #三元表达式。 比较复杂不建议  
+   <img src="" alt="title悬浮时会有神马图" :src="imgSrc" @click="tochange":title="imgTitle" :class="isActive?'active':''">
+  #修改如下 "{名称:bool}""
+   <img src="" alt="title悬浮时会有神马图" :src="imgSrc" @click="tochange":title="imgTitle" :class="{active:isActive}">
+
+</div>
+<script>
+	var app=new Vue({
+		el:"#app",
+		data:{
+			imgSrc:"1.jpg",
+			imgTitle:"神马图",
+			isActive:false
+		},
+		methods: {
+			tochange:function(){
+				this.isActive=!this.isActive;
+			}
+		},
+	})
+</script> -->
+
+
+
+<!-- 轮播图实例 -->
+
+<!-- 
+<div id="app">
+ #图片索引
+ 
+	<img src="" alt="" :src="imgArr[index]">
+ #上一张
+ <a href="#" @click="prior">上一张</a>
+ #下一张
+ <a href="#" @click="next">下一张</a>
+</div>
+#注意这里的this使用否则无法获取。
+
+<script>
+	var app=new Vue({
+		el:"#app",
+		data:{
+			imgArr:[
+			"1.jpg",
+			"2.jpg"
+			],
+			index:0,
+		},
+methods: {
+	prior:function(){
+		if(this.index!=0){
+		this.index--;}
+	},
+	next:function(){
+		if(this.index<this.imgArr.length-1){
+		this.index++;}
+	}
+},
+	})
+</script> -->
+
+
+<!-- v-for 根据数据生成列表结构  v-for中的in不能去除 语法是(item,index)in 数据-->
+<!-- <div id="app">
+	<input type="button" value="添加"@click="add">
+	<input type="button" value="移除" @click="remove">
+	<ul>
+		索引可以加1 这样从1开始 1fengee
+2sd
+33
+44
+55
+		<li v-for="(item,index) in arr">{{index+1}}{{item}}</li>
+		<h2 v-for="array in array">{{array}}</h2>
+		#这个h2会出现 { "name": "你好"  若改成以下则不会出现}
+		<h2 v-for="array in array" :title="array.name">{{array.name}}</h2>
+
+	</ul>
+</div>
+<script>
+	var app=new Vue({
+		el:"#app",
+		data:{
+			arr:["fengee","sd",3,4,5], 
+			// 生成五个li标签但是里面没有任何内容 只有使用{{item}}才会出现否则只有五个标签
+			array:[
+				{name:"你好"},
+				{name:"你很好"},
+			]
+		},
+		methods: {
+			// push是vue添加数据 shift移除  默认移除最左边的 先移除你好，你很好。。。。。。
+			add:function(){
+				this.array.push({name:"降龙十八掌"})
+			},
+			remove:function(){
+				this.array.shift()
+			}
+		},
+	})
+</script>
+ -->
+
+
+
+	<!-- v-on 补充 传递自定义参数 事件修饰符 有很多种
+	keyup 是事件修饰符，任何一个键盘按钮都会触发
+	-->
+	<!-- <div id="app" >
+ <input type="button" value="点击" @click="doit(666,'老铁')">
+ <input type="text" name="" id="" @keyup.enter="sayhi" value="点击1">
+    # 如果此时在里面输入一个字符就会输出弹窗并不好 所以要用文本修饰符+enter 回车修饰 限制触发按键
+
+</div>
+<script>
+  var app =new Vue({
+	  el:"#app",
+	  methods: {
+		  p1，p2形参
+		  doit:function(p1,p2){
+			  console.log("it");
+			  console.log(p1,p2);
+		  },
+		  sayhi:function(){
+			alert("弹窗");
+		  }
+	  },
+  })
+</script> -->
 </html>
