@@ -490,7 +490,7 @@ methods: {
 	 }
  </script> -->
 
-<div id="app">
+<!-- <div id="app">
   <input type="button" value="获取笑话" @click="getJoke">
   <p>{{joke}}</p>
 </div>
@@ -517,5 +517,76 @@ methods: {
 	)}
 		},
 	})
-</script>
+</script> -->
+
+
+
+
+
+
+<!-- 查询天气应用 enter查询 点击查询-->
+
+<!-- <div id="app">
+	<input type="text" v-model="city" placeholder="请输入查询的天气"@keyup.enter="search">
+	<button class="input_sub" >搜索</button>
+	<a href="#"@click="searchcity('广州')">广州</a>
+<a href="#"@click="searchcity('上海')">上海</a>
+
+<ul>
+	<li  v-for="item in weatherlist">
+		<span>{{ item.type }}</span>
+		<span>{{item.low}}</span>
+		<span>{{item.high}}</span>
+		<span>{{item.date}}</span>
+	</li>
+</ul>
+</div>
+<script>
+	var app=new Vue({
+      el:"#app",
+	  data:{
+		  city:'',
+		  weatherlist:[],
+	  },
+	  methods: {
+		  search:function(){
+			//   console.log("sed");
+			//保存this
+			var that=this;
+			  axios.get("http://wthrcdn.etouch.cn/weather_mini?city="
+			  +this.city)
+			  .then(function(response){
+				//   console.log(response.data.data.forecast);
+				  //这里的that指向整个vue中return里面的内容
+				  that.weatherlist=response.data.data.forecast;
+				//   console.log(that.weatherlist);
+			  })
+			  .catch(function(err){
+
+			  })
+		  },
+		  searchcity:function(city){
+			  //城市修改
+			this.city=city;
+			var that=this;
+			  axios.get("http://wthrcdn.etouch.cn/weather_mini?city="
+			  +this.city)
+			  .then(function(response){
+				//   console.log(response.data.data.forecast);
+				  //这里的that指向整个vue中return里面的内容
+				  that.weatherlist=response.data.data.forecast;
+			  })
+			  .catch(function(err){
+
+			  })
+		  }
+	  },
+	})
+
+
+
+</script> -->
+
+
+
 </html>
