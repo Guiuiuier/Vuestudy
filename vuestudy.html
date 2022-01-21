@@ -587,6 +587,46 @@ methods: {
 
 </script> -->
 
+<!-- 音乐软件 搜索功能 -->
+<div id="app">
+	<input type="text"  v-model="query" @keyup.enter="searchmusic">
+	<input type="button" value="搜索">
+	<ul>
+		<li v-for="item in musiclist">
+			<a href="#"@click="playmusic(item.id)">d</a>
+			<span>{{item.name}}</span>
+		</li>
+	</ul>
+	<audio src="" controls="controls" autoplay="autoplay" loop="loop"></audio>
+</div>
+<script>
+var app=new Vue({
+	el:"#app",
+	data:{
+     query:"",
+	 musiclist:[]
+	},
+	//音乐查询
+	methods: {
+		searchmusic:function(){
+			var that=this;
+			axios.get("https://autumnfish.cn/search?keywords="+this.query).then(function(response){
+				// console.log(that.response=response.data.result.songs);
+				that.musiclist=response.data.result.songs;
+			},function(err){
 
+			})
+		},
+		playmusic:function(musicid){
+			console.log(musicid);	
+			// var that=this;
+			axios.get("https://music.163.com/#/song?id="+musicid).then(function(response){
+				console.log(response);
+			},function(err){
 
+			})
+		}
+	},
+})
+</script>
 </html>
