@@ -10,48 +10,36 @@
 
 <body>
     <!-- bind :指的是属性内容元素或者自定义属性的。  on指的时js响应事件 -->
-    <div id="app">{{message}}
+    <!-- <div id="app">{{message}}
         <ol>
             <li v-for='todo in todos'>{{todo.text}}</li>
         </ol>
-        <a :href="school.href.toUpperCase()">{{school.href}}</a>
+        <a :href="school.href.toUpperCase()">{{school.href}}</a> -->
         <!-- <a :x=''></a> -->
 
-        <!-- 单项数据绑定 -->
-        <input type="text" :value="school.href">
-        <!-- 双向数据绑定  数据不能仅从data流向页面 还能从页面流向data-->
-        <!-- v-model只适合表单元素 -->
-        <!-- v-model简写是  v-model="" v-model:value -->
-        <input type="text" v-model="school.href">
-    </div>
-</body>
 
-</html>
-<script>
-    Vue.config.productionTip = false //阻止vue在启动时的生产提示
-</script>
-<script>
-    var app = new Vue({
-        //  app.$mount('#app')也能指定容器
-        el: '#app',
-        data: {
-            message: 'd',
-            todos: [{
-                text: 'xuexi'
-            }, {
-                text: 'byuexi'
-            }],
-            school: {
-                href: 'http://www.baidu.com',
-            },
-            x: 'd',
-        }
-    });
-    console.log(app);
-    setTimeout(function () {
-        app.$mount('#app');
-        console.log(app);
-    }, 1000)
+        <script>
+           // var app = new Vue({
+    //     //  app.$mount('#app')也能指定容器
+    //     el: '#app',
+    //     data: {
+    //         message: 'd',
+    //         todos: [{
+    //             text: 'xuexi'
+    //         }, {
+    //             text: 'byuexi'
+    //         }],
+    //         school: {
+    //             href: 'http://www.baidu.com',
+    //         },
+    //         x: 'd',
+    //     }
+    // });
+    // console.log(app);
+    // setTimeout(function () {
+    //     app.$mount('#app');
+    //     console.log(app);
+    // }, 1000)
 
     //    data两种写法 data:function(){
     // return name:"s"
@@ -69,4 +57,72 @@
     //         name:'dd';
     //     }
     // }
+        </script>
+        <!-- 单项数据绑定 -->
+        <!-- <input type="text" :value="school.href"> -->
+        <!-- 双向数据绑定  数据不能仅从data流向页面 还能从页面流向data-->
+        <!-- v-model只适合表单元素 -->
+        <!-- v-model简写是  v-model="" v-model:value -->
+        <!-- <input type="text" v-model="school.href"> -->
+    <!-- </div> -->
+
+
+     <!-- 只在button中生效 -->
+     <!-- <input type="button" id="wrap" value="自增" @click='add'>{{num}}</input> -->
+     <!-- <button id="wrap" @click='add'><span>{{num}}</span></button> -->
+     <!-- <script>
+         
+        var app=new Vue({
+            el:'#wrap',
+            data:{
+                num:1,
+            },
+            methods: {
+                add:function(){
+            this.num++      ;
+                }
+            },
+        })
+        </script> -->
+
+        <!-- methods和computed区别  就在于methods需要调用方法 且在调用的时候才会执行一次  computed会一直执行。浪费资源 -->
+             <div id="app">
+                    长度:<input type="text" v-model='length' ><br>
+                    宽度：<input type="text" v-model="width"><br>
+                     面积:<input type="text" v-model='area'><input type="button" @click="areas" value="面积为"><br>
+                     长和宽的一起值:<input type="text" v-model='adds'>
+                    
+
+
+             </div>
+             <script>
+                 var app =new Vue({
+                      el:'#app',
+                      data:{
+                          width:0,
+                          length:0,
+                          area:0,
+                      },
+                      methods:{
+                           areas:function(){
+                                this.area=this.length*this.width;
+                           }
+                      },
+                      computed:{
+                          adds:function(){
+                               var add=0;
+                                // add=(this.length)+(this.width);  //此时这样写拼串只能转化为int后才可以
+                                add=parseInt(this.length)+parseInt(this.width);
+                                return add;
+                          }
+                      }
+                 })
+             </script>
+            </body>
+
+</html>
+<script>
+    Vue.config.productionTip = false //阻止vue在启动时的生产提示
+</script>
+<script>
 </script>
