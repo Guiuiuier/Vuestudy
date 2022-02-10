@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <!-- bind :指的是属性内容元素或者自定义属性的。  on指的时js响应事件 -->
+    <div id="app">{{message}}
+        <ol>
+            <li v-for='todo in todos'>{{todo.text}}</li>
+        </ol>
+        <a :href="school.href.toUpperCase()">{{school.href}}</a>
+        <!-- <a :x=''></a> -->
+
+        <!-- 单项数据绑定 -->
+        <input type="text" :value="school.href">
+        <!-- 双向数据绑定  数据不能仅从data流向页面 还能从页面流向data-->
+        <!-- v-model只适合表单元素 -->
+        <!-- v-model简写是  v-model="" v-model:value -->
+        <input type="text" v-model="school.href">
+    </div>
+</body>
+
+</html>
+<script>
+    Vue.config.productionTip = false //阻止vue在启动时的生产提示
+</script>
+<script>
+    var app = new Vue({
+        //  app.$mount('#app')也能指定容器
+        el: '#app',
+        data: {
+            message: 'd',
+            todos: [{
+                text: 'xuexi'
+            }, {
+                text: 'byuexi'
+            }],
+            school: {
+                href: 'http://www.baidu.com',
+            },
+            x: 'd',
+        }
+    });
+    console.log(app);
+    setTimeout(function () {
+        app.$mount('#app');
+        console.log(app);
+    }, 1000)
+
+    //    data两种写法 data:function(){
+    // return name:"s"
+    // }
+
+    // 不可以这样写 因为this是静态的指向winodw 要写成上面那种形式
+    //  data:()=>{
+    //     return {
+    //         name'ss',
+    //     }
+    // }
+
+    // data(){
+    //     return{
+    //         name:'dd';
+    //     }
+    // }
+</script>
