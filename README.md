@@ -15,7 +15,7 @@
    gittignore git版本控制忽略文件
    postcssrc.js 源码相关js
    package.json 类似于pom.xml 依赖管理 jquery不建议手动修改
-   package-lock.json  对package.json枷锁
+   package-lock.json  对package.json上锁
    
-
+   很小很小一个小单页
   //更新
