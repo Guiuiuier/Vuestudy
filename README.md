@@ -92,13 +92,56 @@ import {mapState} from 'vuex'
    ...mapState(['count'])
  }
    methods：{
-      ...mapMutation(['add'，'addN']) //固定于法
+      ...mapMutation(['add'，'addN']) //固定写法
    }
 mutation 不要再里面写setimeout这种异步操作， 
+必须通过action 但是在action中还是要通过触发mutation的方式变更数据 
+mutations:{
+  add(state){
+    state.count++
+  }
+}
+actions:{context}{
+  setimeout(()=>{
+    context.commit("add")
+  },1000)
+}
+//触发action第一种方式
+ this.$store.dispatch("addAsync")
+
+触发actions的第二种方式
+从 vuex中按需导入mapActions 函数
+import {mapActions} from ’vuex‘
+ //将指定的actions函数 映射为当前组件的methods函数
+ methods:{
+   ...mapActions(['addAsync','addNasync'])
+ }
 
  Mutation 修改组件中的数据 只能通过mutation变更store数据 不可以直接操纵store的数据 可以监控所有数据的变化
 触发mutaion的第一种方式  this.$store.commit('add');
 可以触发参数  add(state,step){state.count+=step}  this.$store.commit('add',3)
+  
+
+
+  Getter用于对store中的数据进行加工处理形成新的数据
+  1，getter可以对store中已有的数据加工处理之后形成新的数据，类似vue的计算属性
+  2 store中数据发生变化，getter的数据也会跟着变化 在computed中
+   定义getter
+    const store =new Vuex.store({
+      state:{
+        count:0
+      },
+    }),
+    getters:{
+      showNum:state=>{
+        return '当前最新的数量是'['+state.count+']'
+      }
+    }
+    第一种方式 this.$stote.getters.名称
+    第二种方式 通过映射 mapGetters 
+     computed:{
+       ...mapGetters('showNum');
+     }
 git提交
  git status 
  git add .
