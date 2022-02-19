@@ -1,22 +1,27 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-
+import login from '../views/login/index.vue'
+import find from '../views/find/index.vue'
 Vue.use(VueRouter)
+
+// 引入bootstarp
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+// Install BootstrapVue
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
+
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path:'/login/index',
+    name:"login",
+    component:login,
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path:'/find/index',
+    name:'find',
+    component:find,
   }
 ]
 
