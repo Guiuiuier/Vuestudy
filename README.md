@@ -7,7 +7,7 @@
    assets 用来存放静态资源#
    router  配置项目中的路由#
    app.vue  项目的根组件#
-   main.js  项目中主入口#
+   main.js  项目中主入口#1
 
    static 其他静态
    babelrc 将es6转换为es5
